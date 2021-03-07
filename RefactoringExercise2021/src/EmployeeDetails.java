@@ -26,6 +26,7 @@ import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.Vector;
 
+
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.ImageIcon;
@@ -184,17 +185,17 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		first.setToolTipText("Display first Record");
 
 		navigPanel.add(previous = new JButton(new ImageIcon(
-				new ImageIcon("prev.png").getImage()
+					new ImageIcon("prev.png").getImage()
 				.getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH))));
 		previous.setPreferredSize(new Dimension(17, 17));
 		previous.addActionListener(this);
-		previous.setToolTipText("Display previous Record");
+		previous.setToolTipText("Displaypreviouss Record");
 
 		navigPanel.add(next = new JButton(new ImageIcon(
 				new ImageIcon("next.png").getImage().getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH))));
 		next.setPreferredSize(new Dimension(17, 17));
 		next.addActionListener(this);
-		next.setToolTipText("Display next Record");
+		next.setToolTipText("Displaynextt Record");
 
 		navigPanel.add(last = new JButton(new ImageIcon(
 				new ImageIcon("last.png").getImage().getScaledInstance(17, 17, java.awt.Image.SCALE_SMOOTH))));
@@ -266,8 +267,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		cancelChange.setToolTipText("Cancel edit");
 
 		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");	
-		
-		empDetailsErrorChecking(empDetails);
+				empDetailsErrorChecking(empDetails);
 		
 		return empDetails;
 	}// end detailsPane
@@ -663,13 +663,12 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	// check for correct PPS format and look if PPS already in use
 	public boolean correctPps(String pps, long currentByte) {
 		boolean ppsExist = false;
+		
+		final String regex = "(\\d{6}[a-zA-Z]{1})";
+		
 		// check for correct PPS format based on assignment description
-		if (pps.length() == 8 || pps.length() == 9) {
-			if (Character.isDigit(pps.charAt(0)) && Character.isDigit(pps.charAt(1))
-					&& Character.isDigit(pps.charAt(2))	&& Character.isDigit(pps.charAt(3)) 
-					&& Character.isDigit(pps.charAt(4))	&& Character.isDigit(pps.charAt(5)) 
-					&& Character.isDigit(pps.charAt(6))	&& Character.isLetter(pps.charAt(7))
-					&& (pps.length() == 8 || Character.isLetter(pps.charAt(8)))) {
+		
+			if (pps.matches(regex)) {
 				// open file for reading
 				application.openReadFile(file.getAbsolutePath());
 				// look in file is PPS already in use
@@ -678,9 +677,8 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			} // end if
 			else
 				ppsExist = true;
-		} // end if
-		else
-			ppsExist = true;
+	
+	
 
 		return ppsExist;
 	}// end correctPPS

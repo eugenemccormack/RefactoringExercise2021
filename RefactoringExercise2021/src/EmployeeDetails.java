@@ -227,8 +227,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 	private JPanel detailsPanel() {
 		JPanel empDetails = new JPanel(new MigLayout());
 		JPanel buttonPanel = new JPanel();
-		JTextField field;
-
+		
 		empDetails.setBorder(BorderFactory.createTitledBorder("Employee Details"));
 
 		empDetails.add(new JLabel("ID:"), "growx, pushx");
@@ -265,8 +264,17 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		cancelChange.setVisible(false);
 		cancelChange.setToolTipText("Cancel edit");
 
-		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");
-
+		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");	
+		
+		empDetailsComponentsPanel(empDetails);
+		
+		return empDetails;
+	}// end detailsPane
+	
+	public void empDetailsComponentsPanel(JPanel empDetails) {
+		
+		JTextField field;
+		
 		// loop through panel components and add listeners and format
 		for (int i = 0; i < empDetails.getComponentCount(); i++) {
 			empDetails.getComponent(i).setFont(font1);
@@ -291,9 +299,11 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 					}// end paint
 				});
 			} // end else if
+			
 		} // end for
-		return empDetails;
-	}// end detailsPanel
+		
+		
+	}
 
 	// display current Employee details
 	public void displayRecords(Employee thisEmployee) {

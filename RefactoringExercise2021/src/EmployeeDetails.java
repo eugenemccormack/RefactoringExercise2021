@@ -317,9 +317,12 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 		searchBySurnameField.setText("");
 		// if Employee is null or ID is 0 do nothing else display Employee
 		// details
-		if (currentEmployee == null) {
-		} else if (currentEmployee.getEmployeeId() == 0) {
-		} else {
+		if (currentEmployee == null || currentEmployee.getEmployeeId() == 0) {
+			
+			
+		} 
+		
+		else {
 			// find corresponding gender combo box value to current employee
 			while (!found && countGender < gender.length - 1) {
 				if (Character.toString(currentEmployee.getGender()).equalsIgnoreCase(gender[countGender]))

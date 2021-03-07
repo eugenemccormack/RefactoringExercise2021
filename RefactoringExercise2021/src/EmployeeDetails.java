@@ -342,7 +342,7 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 			departmentCombo.setSelectedIndex(countDep);
 			salaryField.setText(format.format(currentEmployee.getSalary()));
 			// set corresponding full time combo box value to current employee
-			if (currentEmployee.getFullTime() == true)
+			if (currentEmployee.getFullTime())
 				fullTimeCombo.setSelectedIndex(1);
 			else
 				fullTimeCombo.setSelectedIndex(2);

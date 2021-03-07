@@ -267,12 +267,12 @@ public class EmployeeDetails extends JFrame implements ActionListener, ItemListe
 
 		empDetails.add(buttonPanel, "span 2,growx, pushx,wrap");	
 		
-		empDetailsComponentsPanel(empDetails);
+		empDetailsErrorChecking(empDetails);
 		
 		return empDetails;
 	}// end detailsPane
 	
-	public void empDetailsComponentsPanel(JPanel empDetails) {
+	public void empDetailsErrorChecking(JPanel empDetails) {
 		
 		JTextField field;
 		

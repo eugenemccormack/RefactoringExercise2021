@@ -10,24 +10,24 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 // set text field input limits
 class JTextFieldLimit extends PlainDocument {
-  private int limit;
-  JTextFieldLimit(int limit) {
+  private int maxCharacters;
+  JTextFieldLimit(int maxCharacters) {
     super();
-    this.limit = limit;
+    this.maxCharacters = maxCharacters;
   }// end JTextFieldLimit
 
-  JTextFieldLimit(int limit, boolean upper) {
+  JTextFieldLimit(int maxCharacters, boolean upper) {
     super();
-    this.limit = limit;
+    this.maxCharacters = maxCharacters;
   }// end JTextFieldLimit
 
   public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException {
     if (str == null)
       return;
 
-    if ((getLength() + str.length()) <= limit) 
+    if ((getLength() + str.length()) <= maxCharacters) 
       super.insertString(offset, str, attr);
     else
-    	JOptionPane.showMessageDialog(null, "For input " + limit + " characters maximum!");
+    	JOptionPane.showMessageDialog(null, "For input " + maxCharacters + " characters maximum!");
   }// end insertString
 }// end class JTextFieldLimits
